@@ -10,4 +10,6 @@
     <string name="global">global</string>
     <string name="action_edit">edit</string>
     <string name="action_friends">friends</string>
+    <string name="leaderboards">Leaderboeards</string>
+    <string name="profile">Profile</string>
 </resources>
