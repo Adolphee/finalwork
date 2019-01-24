@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bookcard"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_margin="7.5dp"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    cardview:cardCornerRadius="20dp"
+    cardview:cardElevation="20dp"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        tools:layout_editor_absoluteX="163dp"
+        tools:layout_editor_absoluteY="0dp"
+        android:background="@color/White">
+
+        <ImageView
+            android:id="@+id/book_img"
+            android:layout_width="68dp"
+            android:layout_height="68dp"
+            android:background="@drawable/ic_face_black_24dp"
+            android:scaleType="centerCrop" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="68dp"
+            android:background="@color/midnight_grey"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.75"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/friend_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:foregroundTint="@color/midnight_grey"
+                    android:gravity="center"
+                    android:text="Dayan Trabanco P."
+                    android:textAlignment="center"
+                    android:textColor="@color/White"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/friend_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="34dp"
+                    android:foregroundTint="@color/midnight_grey"
+                    android:gravity="center"
+                    android:text="Dayan.Trabanco.Perez@student.ehb.be"
+                    android:textAlignment="center"
+                    android:textColor="@color/White"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+
+            <Button
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginRight="0dp"
+                android:layout_weight="0.25"
+                android:background="@color/green"
+                android:text="Play"
+                android:textColor="@color/midnight_grey"
+                android:textSize="20sp"
+                android:clickable="true"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ProfileActivity"
+    tools:context=".activities.ProfileActivity"
     android:background="@color/midnight_grey">
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
             xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context=".ProfileActivity"
+            tools:context=".activities.ProfileActivity"
             android:background="@color/midnight_grey">
 
             <android.support.constraint.ConstraintLayout
@@ -29,14 +29,14 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:layout_marginBottom="8dp"
-                    android:src="@mipmap/ic_launcher_round"
+                    android:src="@drawable/ic_face_white_133dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.092"
-                    tools:src="@tools:sample/avatars[4]"/>
+                    android:backgroundTint="@color/midnight_grey"/>
 
                 <RatingBar
                     android:id="@+id/ratingBar"

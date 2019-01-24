@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="ehb.adolphe.finalwork.LBActivity">
+    tools:context="ehb.adolphe.finalwork.activities.LBActivity">
     <item
         android:id="@+id/action_edit"
         android:orderInCategory="100"
@@ -20,5 +20,5 @@
         android:orderInCategory="100"
         android:title="@string/action_friends"
         android:icon="@drawable/ic_friends_white_24dp"
-        app:showAsAction="always" />
+        app:showAsAction="always"/>
 </menu>
