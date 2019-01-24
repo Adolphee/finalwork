@@ -1,16 +1,20 @@
 package ehb.adolphe.finalwork;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.SubMenu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
@@ -40,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
             public View makeView() {
                 LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
                 TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
-
                 return txt;
             }
         });
@@ -62,6 +65,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onScrolling() {
 
+            }
+        });
+
+        //als je op foto drukt zal er iets gebeuren.
+        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // Do what you want
+                // list.get(position).titleResId
+                Log.d("myTag", "test click");
             }
         });
     }
