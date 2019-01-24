@@ -24,8 +24,6 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendVi
         this.friends = friends;
     }
 
-    public FriendViewHolder getViewholder(){ return viewHolder; }
-
     @NonNull
     @Override
     public FriendViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -52,21 +50,13 @@ public class FriendsAdapter extends RecyclerView.Adapter<FriendsAdapter.FriendVi
 
     public static class FriendViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tv_fname, tv_lname, tv_email, tv_city, tv_studies;
-        ConstraintLayout friend_list_item;
-
-        public ConstraintLayout getFriend_list_item() {
-            return friend_list_item;
-        }
+        TextView tv_fname, tv_email;
 
         public FriendViewHolder(View itemView) {
             super(itemView);
 
-            tv_fname = (TextView) itemView.findViewById(R.id.friend_name);
-            //tv_lname = (TextView) itemView.findViewById();
-            tv_email = (TextView) itemView.findViewById(R.id.friend_email);
-            // tv_city = (ImageView) itemView.findViewById(R.id.book_img);
-            // tv_studies = (ConstraintLayout) itemView.findViewById(R.id.bookcard);
+            tv_fname = itemView.findViewById(R.id.friend_name);
+            tv_email = itemView.findViewById(R.id.friend_email);
         }
     }
 }

@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
+        <activity
+            android:name=".activities.MultiplayerActivity"
+            android:label="@string/title_activity_multiplayer"
+            android:theme="@style/AppTheme.NoActionBar.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="ehb.adolphe.finalwork.activities.ProfileActivity" />
+        </activity>
         <activity android:name=".activities.ProfileActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.LBActivity"
+            android:name=".activities.LeaderboardsActivity"
             android:label="@string/title_activity_lb"
             android:parentActivityName=".activities.ProfileActivity"
             android:theme="@style/AppTheme.NoActionBar">
@@ -31,6 +39,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="ehb.adolphe.finalwork.activities.ProfileActivity" />
