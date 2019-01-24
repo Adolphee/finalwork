@@ -20,37 +20,34 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.profile_toolbar);
         setSupportActionBar(toolbar);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        Button lbButton = (Button) findViewById(R.id.btn_PLeaderboards);
+        Button lbButton = findViewById(R.id.btn_PLeaderboards);
 
-        lbButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LBActivity.class);
-                startActivity(intent);
-            }
+        lbButton.setOnClickListener(v -> {
+            Intent intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+            startActivity(intent);
         });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_profile, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
+        Intent intent;
 
-       // noinspection SimplifiableIfStatement
-        if (id == R.id.action_friends) {
-            Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
-            startActivity(intent);
-            return true;
+        switch (id){
+            case R.id.action_friends:
+                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_play:
+                intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                startActivity(intent);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
