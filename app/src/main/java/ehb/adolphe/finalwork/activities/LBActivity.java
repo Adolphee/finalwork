@@ -1,5 +1,6 @@
-package ehb.adolphe.finalwork;
+package ehb.adolphe.finalwork.activities;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import ehb.adolphe.finalwork.R;
 
 public class LBActivity extends AppCompatActivity {
 
@@ -77,8 +80,10 @@ public class LBActivity extends AppCompatActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        // noinspection SimplifiableIfStatement
+        if (id == R.id.action_friends) {
+            Intent intent = new Intent(getApplicationContext(), FriendsActivity.class);
+            startActivity(intent);
             return true;
         }
 
