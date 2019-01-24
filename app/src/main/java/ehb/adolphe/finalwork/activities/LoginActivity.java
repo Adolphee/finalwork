@@ -1,4 +1,4 @@
-package ehb.adolphe.finalwork;
+package ehb.adolphe.finalwork.activities;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatCheckBox;
 import android.view.View;
+
+import ehb.adolphe.finalwork.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener{
     private NestedScrollView nestedScrollView;

@@ -8,6 +8,7 @@
     android:background="@color/transparent_grey">
 
     <Button
+        android:id="@+id/solo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -24,6 +25,7 @@
         app:layout_constraintVertical_bias="0.351" />
 
     <Button
+        android:id="@+id/multiplayer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"

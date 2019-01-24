@@ -1,26 +1,23 @@
-package ehb.adolphe.finalwork;
+package ehb.adolphe.finalwork.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Display;
 import android.view.LayoutInflater;
-import android.view.SubMenu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.Button;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import ehb.adolphe.finalwork.R;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
 import ehb.adolphe.finalwork.model.Subject;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;

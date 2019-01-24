@@ -1,4 +1,4 @@
-package ehb.adolphe.finalwork;
+package ehb.adolphe.finalwork.activities;
 
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import android.widget.TextView;
+
+import ehb.adolphe.finalwork.R;
 
 public class LBActivity extends AppCompatActivity {
 
