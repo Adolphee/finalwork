@@ -31,9 +31,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().hide();
-
-
         initViews();
         checkSharedPreferences();
         initListeners();
@@ -67,6 +64,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         switch (v.getId()) {
             case R.id.appCompatButtonLogin:
                 saveAccount();
+                Intent mainRegister = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(mainRegister);
                 break;
         }
     }

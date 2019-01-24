@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Display;
 import android.view.LayoutInflater;
 import android.view.SubMenu;
 import android.view.View;
@@ -72,9 +73,13 @@ public class MainActivity extends AppCompatActivity {
         coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                // Do what you want
-                // list.get(position).titleResId
+                //naar login gaan
                 Log.d("myTag", "test click");
+                //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+               // startActivity(intentLogin);
+
+                //popup single or multi kiezen
+                startActivity(new Intent(MainActivity.this,ModeActivity.class));
             }
         });
     }
