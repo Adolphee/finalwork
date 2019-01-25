@@ -18,6 +18,27 @@
     <string name="Choose_opponent">Choose opponent</string>
     <string name="title_activity_multiplayer">Multiplayer</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    //login
+    <string name="hint_name">Name</string>
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
+    <string name="hint_confirm_password">Confirm Password</string>
+    <string name="text_Login">Login</string>
+    <string name="text_register">Register</string>
+    <string name="error_message_name">Enter Full Name</string>
+    <string name="error_message_email">Enter Valid Email</string>
+    <string name="error_message_password">Enter Password</string>
+    <string name="success_message">Registration Succesful</string>
+    <string name="text_not_member">No account yet? Create one</string>
+    <string name="text_already_member">Already a member? Login</string>
+    <string name="error_email_exists">Email Already Exists</string>
+    <string name="error_password_match">Password Does Not Match</string>
+    <string name="error_valid_email_password">Wrong Email or Password</string>
+    <string name="text_remember_me">Remember Me</string>
+
+    //Main
+    <string name="play_button">Play</string>
+    <string name="courses">Courses</string>
+    <string name="action_play">Play</string>
+    <string name="action_home">Home</string>
 </resources>

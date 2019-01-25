@@ -90,7 +90,7 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
                 startActivity(intent);
                 return true;
             case R.id.action_play:
-                intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                intent = new Intent(getApplicationContext(), ModeActivity.class);
                 startActivity(intent);
                 return true;
         }
