@@ -2,9 +2,11 @@ package ehb.adolphe.finalwork.fragments;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -25,6 +27,8 @@ import ehb.adolphe.finalwork.activities.ModeActivity;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
 import ehb.adolphe.finalwork.model.Subject;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
+
+import static android.view.Gravity.CENTER;
 
 
 /**
@@ -93,6 +97,9 @@ public class MPRandomFragment extends Fragment {
         mTitle.setFactory(() -> {
             LayoutInflater inf = LayoutInflater.from(getActivity());
             TextView txt = (TextView)inf.inflate(R.layout.layout_title,null);
+            txt.setTextColor(R.color.midnight_grey);
+            txt.setTextSize(30);
+            txt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             return txt;
         });
         Animation in = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_in_top);
@@ -107,7 +114,7 @@ public class MPRandomFragment extends Fragment {
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText(subjectList.get(position).getName());
+                mTitle.setText( "Take a quick " + subjectList.get(position).getName() + " quiz!");
             }
 
             @Override

@@ -84,6 +84,10 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
                 intent = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_leaderboards:
+                intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+                startActivity(intent);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);

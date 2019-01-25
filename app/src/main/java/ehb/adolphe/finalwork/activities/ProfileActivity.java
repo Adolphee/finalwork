@@ -19,6 +19,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.profile_toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button lbButton = findViewById(R.id.btn_PLeaderboards);
 
         lbButton.setOnClickListener(v -> {
@@ -45,6 +46,10 @@ public class ProfileActivity extends AppCompatActivity {
                 return true;
             case R.id.action_play:
                 intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_leaderboards:
+                intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
                 startActivity(intent);
                 return true;
         }

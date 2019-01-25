@@ -59,6 +59,14 @@ public class FriendsActivity extends AppCompatActivity {
                 intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.action_home:
+                intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_leaderboards:
+                intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
+                startActivity(intent);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
