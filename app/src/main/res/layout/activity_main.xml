@@ -8,26 +8,49 @@
     tools:context=".activities.MainActivity"
     android:background="@color/midnight_grey">
 
-    <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/coverFlow"
-        app:coverHeight="200dp"
-        app:coverWidth="140dp"
-        app:maxScaleFactor="1.5"
-        app:reflectionGap="0px"
-        app:rotationThreshold="0.5"
-        app:scalingThreshold="0.5"
-        app:spacing="0.6"/>
 
-    <TextSwitcher
-        android:id="@+id/title"
-        android:paddingBottom="16dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerVertical="true"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        />
+        android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/coverFlow"
+                app:coverHeight="200dp"
+                app:coverWidth="140dp"
+                app:maxScaleFactor="1.5"
+                app:reflectionGap="0px"
+                app:rotationThreshold="0.5"
+                app:scalingThreshold="0.5"
+                app:spacing="0.6"/>
+
+            <TextSwitcher
+                android:id="@+id/title"
+                android:paddingBottom="16dp"
+                android:layout_alignParentBottom="true"
+                android:layout_centerVertical="true"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </RelativeLayout>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/main_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:subtitle="Choose subject"
+            app:title="@string/courses"
+            app:titleTextColor="@color/green"
+            android:layout_margin="0dp"/>
+    </FrameLayout>
 
 
 </RelativeLayout>

@@ -10,6 +10,13 @@
     <string name="global">global</string>
     <string name="action_edit">edit</string>
     <string name="action_friends">friends</string>
+    <string name="leaderboards">Leaderboeards</string>
+    <string name="profile">Profile</string>
+    <string name="Friends">Friends</string>
+    <string name="Multiplayer">Multiplayer</string>
+    <string name="Random">Random</string>
+    <string name="Choose_opponent">Choose opponent</string>
+    <string name="title_activity_multiplayer">Multiplayer</string>
 
     //login
     <string name="hint_name">Name</string>
@@ -31,4 +38,7 @@
 
     //Main
     <string name="play_button">Play</string>
+    <string name="courses">Courses</string>
+    <string name="action_play">Play</string>
+    <string name="action_home">Home</string>
 </resources>

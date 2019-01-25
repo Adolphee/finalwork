@@ -35,7 +35,7 @@ public class ModeActivity extends Activity {
         multiplayer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(ModeActivity.this, GameActivity.class));
+                startActivity(new Intent(ModeActivity.this, MultiplayerActivity.class));
             }
         });
     }

@@ -7,333 +7,338 @@
     android:layout_height="match_parent"
     tools:context=".activities.ProfileActivity"
     android:background="@color/midnight_grey">
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activities.ProfileActivity"
-        android:background="@color/midnight_grey">
-
-        <android.support.constraint.ConstraintLayout
+        android:layout_height="match_parent">
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <ImageButton
-                android:id="@+id/imageButton"
-                android:layout_width="133dp"
-                android:layout_height="122dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:src="@mipmap/ic_launcher_round"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.498"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.092"
-                tools:src="@tools:sample/avatars[4]"/>
+            android:layout_height="match_parent"
+            tools:context=".activities.ProfileActivity"
+            android:background="@color/midnight_grey">
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="8dp"
-                android:hapticFeedbackEnabled="true"
-                android:numStars="5"
-                android:progressTint="@color/yellow"
-                android:rating="3.5"
-                android:secondaryProgressTint="@color/orange"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/textView" />
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="133dp"
+                    android:layout_height="122dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:src="@drawable/ic_face_white_133dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.498"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.092"
+                    android:backgroundTint="@color/midnight_grey"/>
 
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="92dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:gravity="center"
-                android:text="Een_Broer"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.499"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageButton"
-                android:textColor="@color/White"/>
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="711dp"
-                android:layout_height="39dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.47"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ratingBar">
-
-                <TextView
-                    android:id="@+id/textView2"
+                <RatingBar
+                    android:id="@+id/ratingBar"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Exp"
-                    android:textColor="@color/White"
-                    app:layout_constraintEnd_toStartOf="@+id/progressBar"
-                    tools:layout_editor_absoluteY="270dp" />
-
-                <ProgressBar
-                    android:id="@+id/progressBar"
-                    style="?android:attr/progressBarStyleHorizontal"
-                    android:layout_width="239dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="20dp"
                     android:layout_marginEnd="8dp"
-                    android:max="100"
-                    android:progress="75"
-                    android:progressTint="@color/green"
+                    android:hapticFeedbackEnabled="true"
+                    android:numStars="5"
+                    android:progressTint="@color/yellow"
+                    android:rating="3.5"
+                    android:secondaryProgressTint="@color/orange"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.493"
+                    app:layout_constraintHorizontal_bias="0.496"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+                    app:layout_constraintTop_toTopOf="@+id/textView" />
 
                 <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Lvl 23"
-                    android:textColor="@color/White"
-                    app:layout_constraintStart_toEndOf="@+id/progressBar"
-                    tools:layout_editor_absoluteY="270dp" />
-            </LinearLayout>
-
-
-            <LinearLayout
-                android:id="@+id/details_container"
-                android:layout_width="375dp"
-                android:layout_height="425dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/transparent_grey"
-                android:fadeScrollbars="false"
-                android:fadingEdge="none"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp"
-                android:requiresFadingEdge="none"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Naam"
-                        android:textColor="@color/blue"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-
-                    <EditText
-                        android:id="@+id/editText4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".30"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Adolphe"
-                        android:textColor="@color/White"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-
-                    <EditText
-                        android:id="@+id/editText7"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".20"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Mk"
-                        android:textColor="@color/White"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="343dp" />
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText11"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Studeert"
-                        android:textColor="@color/blue"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-
-                    <EditText
-                        android:id="@+id/editText5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="3 BaDig-X"
-                        android:textColor="@color/White"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText9"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Woont in"
-                        android:textColor="@color/blue"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-
-                    <EditText
-                        android:id="@+id/editText10"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Aalst"
-                        android:textColor="@color/White"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="343dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <EditText
-                        android:id="@+id/editText2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Email"
-                        android:textColor="@color/blue"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp"/>
-
-                    <EditText
-                        android:id="@+id/editText3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".50"
-                        android:ems="10"
-                        android:enabled="false"
-                        android:inputType="textPersonName"
-                        android:text="Adolphe.mk@ehb.be"
-                        android:textColor="@color/White"
-                        tools:layout_editor_absoluteX="98dp"
-                        tools:layout_editor_absoluteY="309dp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:id="@+id/textView"
+                    android:layout_width="92dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
                     android:gravity="center"
-                    android:paddingBottom="3dp">
+                    android:text="Een_Broer"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.499"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton"
+                    android:textColor="@color/White"/>
 
-                    <Button
-                        android:id="@+id/button9"
-                        style="@style/Widget.AppCompat.Button.Colored"
-                        android:layout_width="130dp"
-                        android:layout_height="49dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="@drawable/smooth_button"
-                        android:text="STatistics"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/details_container"
-                        android:layout_marginBottom="3dp"/>
-                </LinearLayout>
                 <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/linearLayout"
+                    android:layout_width="711dp"
+                    android:layout_height="39dp"
+                    android:gravity="center"
                     android:orientation="horizontal"
-                    android:gravity="center">
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.47"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
-                    <Button
-                        android:id="@+id/btn_PLeaderboards"
-                        style="@style/Widget.AppCompat.Button.Colored"
-                        android:layout_width="130dp"
-                        android:layout_height="46dp"
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Exp"
+                        android:textColor="@color/White"
+                        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+                        tools:layout_editor_absoluteY="270dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="239dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
-                        android:layout_marginTop="8dp"
                         android:layout_marginEnd="8dp"
-                        android:layout_marginBottom="8dp"
-                        android:background="@drawable/smooth_button"
-                        android:text="Leaderboards"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:max="100"
+                        android:progress="75"
+                        android:progressTint="@color/green"
                         app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.493"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/button9" />
+                        app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lvl 23"
+                        android:textColor="@color/White"
+                        app:layout_constraintStart_toEndOf="@+id/progressBar"
+                        tools:layout_editor_absoluteY="270dp" />
                 </LinearLayout>
 
-            </LinearLayout>
-            <Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="?attr/actionBarSize"
-                android:theme="?attr/actionBarTheme"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:subtitle="@string/action_friends"
-                app:title="@string/global"
-                app:titleTextColor="@color/green">
-            </Toolbar>
-        </android.support.constraint.ConstraintLayout>
 
-    </ScrollView>
+                <LinearLayout
+                    android:id="@+id/details_container"
+                    android:layout_width="375dp"
+                    android:layout_height="425dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent_grey"
+                    android:fadeScrollbars="false"
+                    android:fadingEdge="none"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:requiresFadingEdge="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Naam"
+                            android:textColor="@color/blue"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/editText4"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".30"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Adolphe"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/editText7"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".20"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Mk"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="343dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText11"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Studeert"
+                            android:textColor="@color/blue"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/editText5"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="3 BaDig-X"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText9"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Woont in"
+                            android:textColor="@color/blue"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/editText10"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Aalst"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="343dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Email"
+                            android:textColor="@color/blue"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp"/>
+
+                        <EditText
+                            android:id="@+id/editText3"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Adolphe.mk@ehb.be"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingBottom="3dp">
+
+                        <Button
+                            android:id="@+id/button9"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="130dp"
+                            android:layout_height="49dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/smooth_button"
+                            android:text="STatistics"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/details_container"
+                            android:layout_marginBottom="3dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center">
+
+                        <Button
+                            android:id="@+id/btn_PLeaderboards"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="130dp"
+                            android:layout_height="46dp"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/smooth_button"
+                            android:text="Leaderboards"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/button9" />
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
+        </ScrollView>
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/profile_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="?attr/actionBarSize"
+            android:theme="?attr/actionBarTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="8dp"
+            app:subtitle="Adolphe Mk"
+            app:title="@string/profile"
+            app:titleTextColor="@color/green"
+            />
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -4,8 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -35,15 +38,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Toolbar toolbar = findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         initData();
         mTitle = findViewById(R.id.title);
-        mTitle.setFactory(new ViewSwitcher.ViewFactory() {
-            @Override
-            public View makeView() {
-                LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-                TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
-                return txt;
-            }
+        mTitle.setFactory(() -> {
+            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+            TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
+            return txt;
         });
         Animation in = AnimationUtils.loadAnimation(this,R.anim.slide_in_top);
         Animation out = AnimationUtils.loadAnimation(this,R.anim.slide_out_bottom);
@@ -86,5 +91,34 @@ public class MainActivity extends AppCompatActivity {
         subjectList.add(new Subject("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
         subjectList.add(new Subject("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
         subjectList.add(new Subject("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        Intent intent;
+
+        switch (id){
+            case R.id.action_friends:
+                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_profile:
+                intent = new Intent(getApplicationContext(), ProfileActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_play:
+                intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                startActivity(intent);
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
