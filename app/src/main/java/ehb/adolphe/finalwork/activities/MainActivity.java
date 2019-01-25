@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
         mTitle.setFactory(() -> {
             LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
             TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
+            txt.setTextSize(30);;
+            txt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
             return txt;
         });
         Animation in = AnimationUtils.loadAnimation(this,R.anim.slide_in_top);
@@ -62,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText(subjectList.get(position).getName());
+                mTitle.setText("Take a quick " + subjectList.get(position).getName() + " quiz!");
             }
 
             @Override
@@ -115,6 +117,10 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             case R.id.action_play:
                 intent = new Intent(getApplicationContext(), MultiplayerActivity.class);
+                startActivity(intent);
+                return true;
+            case R.id.action_leaderboards:
+                intent = new Intent(getApplicationContext(), LeaderboardsActivity.class);
                 startActivity(intent);
                 return true;
         }

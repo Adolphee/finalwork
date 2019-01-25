@@ -12,6 +12,6 @@
     <color name="transparent_grey">#46000000</color>
     <color name="midnight_grey">#26263D</color>
     <color name="blue">#008EFF</color>
-
     <color name="afternoon_grey">#2f2f45</color>
+    <color name="black">#000000</color>
 </resources>
