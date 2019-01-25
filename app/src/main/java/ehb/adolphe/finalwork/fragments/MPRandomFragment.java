@@ -1,14 +1,30 @@
 package ehb.adolphe.finalwork.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.AdapterView;
+import android.widget.TextSwitcher;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.activities.GameActivity;
+import ehb.adolphe.finalwork.activities.MainActivity;
+import ehb.adolphe.finalwork.activities.ModeActivity;
+import ehb.adolphe.finalwork.adapter.SubjectAdapter;
+import ehb.adolphe.finalwork.model.Subject;
+import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 
 /**
@@ -30,6 +46,11 @@ public class MPRandomFragment extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+
+    private FeatureCoverFlow coverFlow;
+    private SubjectAdapter subjectAdapter;
+    private List<Subject> subjectList = new ArrayList<>();
+    private TextSwitcher mTitle;
 
     public MPRandomFragment() {
         // Required empty public constructor
@@ -66,7 +87,50 @@ public class MPRandomFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_mp_random, container, false);
+        View view = inflater.inflate(R.layout.fragment_mp_random, container, false);
+        initData();
+        mTitle = view.findViewById(R.id.title);
+        mTitle.setFactory(() -> {
+            LayoutInflater inf = LayoutInflater.from(getActivity());
+            TextView txt = (TextView)inf.inflate(R.layout.layout_title,null);
+            return txt;
+        });
+        Animation in = AnimationUtils.loadAnimation(getActivity().getApplicationContext(), R.anim.slide_in_top);
+        Animation out = AnimationUtils.loadAnimation( getActivity().getApplicationContext(), R.anim.slide_out_bottom);
+        mTitle.setInAnimation(in);
+        mTitle.setOutAnimation(out);
+
+        subjectAdapter = new SubjectAdapter(subjectList,getActivity().getApplicationContext());
+        coverFlow = view.findViewById(R.id.coverFlow);
+        coverFlow.setAdapter(subjectAdapter);
+
+        coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
+            @Override
+            public void onScrolledToPosition(int position) {
+                mTitle.setText(subjectList.get(position).getName());
+            }
+
+            @Override
+            public void onScrolling() {
+
+            }
+        });
+
+        //als je op foto drukt zal er iets gebeuren.
+        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //naar login gaan
+                Log.d("myTag", "test click");
+                //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                // startActivity(intentLogin);
+
+                //popup single or multi kiezen
+                startActivity(new Intent(getActivity().getApplicationContext(), GameActivity.class));
+            }
+        });
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -91,5 +155,12 @@ public class MPRandomFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    private void initData() {
+
+        subjectList.add(new Subject("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
+        subjectList.add(new Subject("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
+        subjectList.add(new Subject("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
     }
 }
