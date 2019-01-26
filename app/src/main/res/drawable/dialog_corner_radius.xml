@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android" >
+<!--
     <item android:state_pressed="true" >
         <shape android:shape="rectangle"  >
             <corners android:radius="3dip" />
@@ -7,14 +8,16 @@
             <gradient android:angle="-90" android:startColor="@color/blue" android:endColor="@color/midnight_grey"  />
         </shape>
     </item>
+
     <item android:state_focused="true">
         <shape android:shape="rectangle"  >
             <corners android:radius="3dip" />
-            <stroke android:width="1dip" android:color="@color/White" />
+            <stroke android:width="1dip" android:color="@color/blue" />
             <solid android:color="#58857e"/>
         </shape>
     </item>
-    <item >
+ -->
+    <item>
         <shape android:shape="rectangle"  >
             <corners android:radius="20dip" />
             <stroke android:width="5dip" android:color="@color/White" />

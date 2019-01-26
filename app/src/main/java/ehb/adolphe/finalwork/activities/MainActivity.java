@@ -78,12 +78,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //naar login gaan
-                Log.d("myTag", "test click");
+
                 //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
                // startActivity(intentLogin);
 
                 //popup single or multi kiezen
                 startActivity(new Intent(MainActivity.this,ModeActivity.class));
+                overridePendingTransition(R.anim.slide_popup_down, 0);
+
             }
         });
     }
