@@ -15,35 +15,45 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.adapter.CourseAdapter;
+import ehb.adolphe.finalwork.model.Course;
+import ehb.adolphe.finalwork.services.CourseService;
+import ehb.adolphe.finalwork.services.StudentService;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
+import ehb.adolphe.finalwork.model.Student;
 import ehb.adolphe.finalwork.model.Subject;
+import ehb.adolphe.finalwork.retrofit.RetrofitSingleton;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private FeatureCoverFlow coverFlow;
-    private SubjectAdapter subjectAdapter;
-    private List<Subject> subjectList = new ArrayList<>();
+    private CourseAdapter courseAdapter;
+    private List<Course> courses = new ArrayList<>();
     private TextSwitcher mTitle;
 
-
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         initData();
+        //onLoadCourses();
+
         mTitle = findViewById(R.id.title);
         mTitle.setFactory(() -> {
             LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
@@ -56,15 +66,14 @@ public class MainActivity extends AppCompatActivity {
         Animation out = AnimationUtils.loadAnimation(this,R.anim.slide_out_bottom);
         mTitle.setInAnimation(in);
         mTitle.setOutAnimation(out);
-
-        subjectAdapter = new SubjectAdapter(subjectList,this);
+        courseAdapter = new CourseAdapter(courses,this);
         coverFlow = findViewById(R.id.coverFlow);
-        coverFlow.setAdapter(subjectAdapter);
+        coverFlow.setAdapter(courseAdapter);
 
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText("Take a quick " + subjectList.get(position).getName() + " quiz!");
+                mTitle.setText("Take a quick " + courses.get(position).getName() + " quiz!");
             }
 
             @Override
@@ -78,21 +87,34 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //naar login gaan
-                Log.d("myTag", "test click");
+
+                //voor de service
+                onLoadStudenten();
+
                 //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-               // startActivity(intentLogin);
+                // startActivity(intentLogin);
 
                 //popup single or multi kiezen
                 startActivity(new Intent(MainActivity.this,ModeActivity.class));
+                overridePendingTransition(R.anim.slide_popup_down, 0);
+
             }
         });
     }
 
     private void initData() {
 
-        subjectList.add(new Subject("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
-        subjectList.add(new Subject("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
-        subjectList.add(new Subject("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+        courses.add(new Course("C#","https://camo.githubusercontent.com/0617f4657fef12e8d16db45b8d73def73144b09f/68747470733a2f2f646576656c6f7065722e6665646f726170726f6a6563742e6f72672f7374617469632f6c6f676f2f6373686172702e706e67"));
+        courses.add(new Course("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
+        courses.add(new Course("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+        courses.add(new Course("Java","https://qph.fs.quoracdn.net/main-qimg-48b7a3d8958565e7aa3ad4dbf2312770.webp"));
+        courses.add(new Course("SapUI5","https://www.simplifier.io/wp-content/uploads/2018/01/sapui5-logo_simplifier.png"));
+        courses.add(new Course("JS","https://i1.wp.com/theicom.org/wp-content/uploads/2016/03/js-logo.png?fit=500%2C500&ssl=1"));
+        courses.add(new Course("XML","https://pngimage.net/wp-content/uploads/2018/06/xml-logo-png-3.png"));
+        courses.add(new Course("NodeJS","https://www.sitevela.com/img2/nodejs_i1.png"));
+        courses.add(new Course("Android","http://pngimg.com/uploads/android_logo/android_logo_PNG34.png"));
+        courses.add(new Course("Swift","https://www.symphony-solutions.eu/wp-content/uploads/2018/04/programming-language-swift.png"));
+        courses.add(new Course("React","https://neoteric.eu/wp-content/uploads/2015/08/react-logo-300x300.png"));
     }
 
     @Override
@@ -126,5 +148,71 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void onLoadStudenten() {
+
+        Retrofit retrofit = RetrofitSingleton.getInstance();
+
+        StudentService studentService = retrofit.create(StudentService.class);
+
+        Call<List<Student>> call = studentService.getAll();
+
+        call.enqueue(new Callback<List<Student>>() {
+            @Override
+            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+                if(!response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                    return;
+                }
+                List<Student> students = response.body();
+
+                for(Student student : students) {
+                    String content = "";
+                    content += "firstName" + student.getFirstname() + "\n";
+                    content += "email" + student.getEmail() + "\n";
+                    content += "firstName" + student.getFieldOfStudy()+ "\n";
+
+                    Log.d(TAG, "onResponse: " + content);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Student>> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    void onLoadCourses() {
+
+        Retrofit retrofit = RetrofitSingleton.getInstance();
+
+        CourseService courseService = retrofit.create(CourseService.class);
+
+        Call<List<Course>> call = courseService.getAll();
+
+        call.enqueue(new Callback<List<Course>>() {
+            @Override
+            public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+                if(!response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                    return;
+                }
+                List<Course> courses2 = response.body();
+
+                for(Course course : courses2) {
+
+                    courses.add(new Course(course.getName() , course.getImageUrl()));
+
+                    Log.d(TAG, "onResponse: " + course.getName());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Course>> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
     }
 }

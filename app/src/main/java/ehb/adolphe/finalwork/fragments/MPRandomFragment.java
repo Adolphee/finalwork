@@ -2,11 +2,9 @@ package ehb.adolphe.finalwork.fragments;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Paint;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Layout;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,10 +20,10 @@ import java.util.List;
 
 import ehb.adolphe.finalwork.R;
 import ehb.adolphe.finalwork.activities.GameActivity;
-import ehb.adolphe.finalwork.activities.MainActivity;
-import ehb.adolphe.finalwork.activities.ModeActivity;
+import ehb.adolphe.finalwork.adapter.CourseAdapter;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
-import ehb.adolphe.finalwork.model.Subject;
+import ehb.adolphe.finalwork.model.Course;
+
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 
 import static android.view.Gravity.CENTER;
@@ -52,8 +50,8 @@ public class MPRandomFragment extends Fragment {
     private OnFragmentInteractionListener mListener;
 
     private FeatureCoverFlow coverFlow;
-    private SubjectAdapter subjectAdapter;
-    private List<Subject> subjectList = new ArrayList<>();
+    private CourseAdapter courseAdapter;
+    private List<Course> courses = new ArrayList<>();
     private TextSwitcher mTitle;
 
     public MPRandomFragment() {
@@ -107,14 +105,14 @@ public class MPRandomFragment extends Fragment {
         mTitle.setInAnimation(in);
         mTitle.setOutAnimation(out);
 
-        subjectAdapter = new SubjectAdapter(subjectList,getActivity().getApplicationContext());
+        courseAdapter = new CourseAdapter(courses,getActivity().getApplicationContext());
         coverFlow = view.findViewById(R.id.coverFlow);
-        coverFlow.setAdapter(subjectAdapter);
+        coverFlow.setAdapter(courseAdapter);
 
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText( "Take a quick " + subjectList.get(position).getName() + " quiz!");
+                mTitle.setText( "Take a quick " + courses.get(position).getName() + " quiz!");
             }
 
             @Override
@@ -166,8 +164,16 @@ public class MPRandomFragment extends Fragment {
 
     private void initData() {
 
-        subjectList.add(new Subject("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
-        subjectList.add(new Subject("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
-        subjectList.add(new Subject("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+        courses.add(new Course("C#","https://camo.githubusercontent.com/0617f4657fef12e8d16db45b8d73def73144b09f/68747470733a2f2f646576656c6f7065722e6665646f726170726f6a6563742e6f72672f7374617469632f6c6f676f2f6373686172702e706e67"));
+        courses.add(new Course("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
+        courses.add(new Course("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+        courses.add(new Course("Java","https://qph.fs.quoracdn.net/main-qimg-48b7a3d8958565e7aa3ad4dbf2312770.webp"));
+        courses.add(new Course("SapUI5","https://www.simplifier.io/wp-content/uploads/2018/01/sapui5-logo_simplifier.png"));
+        courses.add(new Course("JS","https://i1.wp.com/theicom.org/wp-content/uploads/2016/03/js-logo.png?fit=500%2C500&ssl=1"));
+        courses.add(new Course("XML","https://pngimage.net/wp-content/uploads/2018/06/xml-logo-png-3.png"));
+        courses.add(new Course("NodeJS","https://www.sitevela.com/img2/nodejs_i1.png"));
+        courses.add(new Course("Android","http://pngimg.com/uploads/android_logo/android_logo_PNG34.png"));
+        courses.add(new Course("Swift","https://www.symphony-solutions.eu/wp-content/uploads/2018/04/programming-language-swift.png"));
+        courses.add(new Course("React","https://neoteric.eu/wp-content/uploads/2015/08/react-logo-300x300.png"));
     }
 }

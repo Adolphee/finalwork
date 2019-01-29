@@ -52,13 +52,10 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        initializeFriendlist();
+
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         friends = new ArrayList<>();
-        friends.add(new Friend("Dayan", "Trabanco P.", "Dayan.TP@ehb.be","Dilbeek", "3BaDig-X"));
-
-        for(int i=1;i<4;i++){
-            friends.add(new Friend("Friend "+i, "lastname "+i, "friend"+i+".lastname"+i +"@ehb.be","Stad "+i, "3BaDig-X"));
-        }
 
         mViewPager = findViewById(R.id.lb_container);
         TabLayout tabLayout = findViewById(R.id.lb_tabs);
@@ -126,10 +123,21 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
     }
 
     public ArrayList<Friend> getFriends() {
-        return friends;
+        return initializeFriendlist();
     }
 
     public void setFriends(ArrayList<Friend> friends) {
         this.friends = friends;
+    }
+
+    private ArrayList<Friend> initializeFriendlist(){
+        friends = new ArrayList<>();
+        friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
+        friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
+        friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
+        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
+        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
+        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
+        return friends;
     }
 }

@@ -10,9 +10,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.activities.FriendsActivity;
 import ehb.adolphe.finalwork.activities.LeaderboardsActivity;
 import ehb.adolphe.finalwork.adapter.FriendsAdapter;
+import ehb.adolphe.finalwork.model.Friend;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -71,7 +75,13 @@ public class LBFriendsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_lb_friends, container, false);
         RecyclerView rv = view.findViewById(R.id.friendlist);
-        FriendsAdapter adapter = new FriendsAdapter(getActivity().getApplicationContext(), ((LeaderboardsActivity) mListener).getFriends());
+        ArrayList<Friend> ff;
+        if(getActivity() instanceof  LeaderboardsActivity){
+            ff = ((LeaderboardsActivity) mListener).getFriends();
+        } else if(getActivity() instanceof FriendsActivity) {
+            ff = ((FriendsActivity) mListener).getFriends();
+        } else ff = new ArrayList<>();
+        FriendsAdapter adapter = new FriendsAdapter(getActivity().getApplicationContext(), ff);
         //boolean isInLandscapeMode = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
         rv.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
         rv.setAdapter(adapter);

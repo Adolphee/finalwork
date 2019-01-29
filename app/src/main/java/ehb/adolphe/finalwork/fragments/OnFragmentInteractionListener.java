@@ -2,6 +2,10 @@ package ehb.adolphe.finalwork.fragments;
 
 import android.net.Uri;
 
+import java.util.ArrayList;
+
+import ehb.adolphe.finalwork.model.Friend;
+
 /**
  * This interface must be implemented by activities that contain this
  * fragment to allow an interaction in this fragment to be communicated
