@@ -19,6 +19,9 @@ public interface StudentService {
     @GET("students/{id}")
     Call<Student> getStudentById(@Path("id") Long id);
 
+    @GET("student/search/{query}")
+    Call<Student> getAllStudentsByUsernameContaining(@Path("name") String name);
+
     @POST("students")
     Call<Student> create(@Body Student student);
 

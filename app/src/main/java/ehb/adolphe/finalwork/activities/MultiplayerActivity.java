@@ -32,7 +32,6 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
     private ArrayList<Friend> friends;
-
     /**
      * The {@link ViewPager} that will host the section contents.
      */
@@ -47,13 +46,8 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        friends = new ArrayList<>();
-        friends.add(new Friend("Dayan", "Trabanco P.", "Dayan.TP@ehb.be","Dilbeek", "3BaDig-X"));
 
-        for(int i=1;i<4;i++){
-            friends.add(new Friend("Friend "+i, "lastname "+i, "friend"+i+".lastname"+i +"@ehb.be","Stad "+i, "3BaDig-X"));
-        }
-
+        initializeFriendlist();
         mViewPager = findViewById(R.id.mp_container);
         TabLayout tabLayout = findViewById(R.id.mp_tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -120,11 +114,22 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
         }
     }
 
+
     public ArrayList<Friend> getFriends() {
         return friends;
     }
 
     public void setFriends(ArrayList<Friend> friends) {
         this.friends = friends;
+    }
+
+    private void initializeFriendlist(){
+        friends = new ArrayList<>();
+        friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
+        friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
+        friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
+        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
+        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
+        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
     }
 }

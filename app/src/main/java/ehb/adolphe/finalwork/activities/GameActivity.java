@@ -34,8 +34,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             b1.setText(btn_name[i]);
             b1.setTag(i);
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            b1.setBackgroundColor(Color.parseColor("#008EFF"));
-            b1.setTextColor(Color.WHITE);
+            // b1.setBackgroundColor(Color.parseColor("#008EFF"));
+            //b1.setTextColor(Color.WHITE);
             parent.addView(b1 ,lp);
             b1.setOnClickListener(GameActivity.this);
         }

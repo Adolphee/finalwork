@@ -1,6 +1,7 @@
 package ehb.adolphe.finalwork.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,10 +14,13 @@ import java.util.ArrayList;
 
 import ehb.adolphe.finalwork.R;
 import ehb.adolphe.finalwork.adapter.FriendsAdapter;
+import ehb.adolphe.finalwork.fragments.OnFragmentInteractionListener;
 import ehb.adolphe.finalwork.model.Friend;
 
-public class FriendsActivity extends AppCompatActivity {
+public class FriendsActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
+
+    ArrayList<Friend> friends;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,14 +29,8 @@ public class FriendsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.friends_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        ArrayList<Friend> friends = new ArrayList<>();
-        friends.add(new Friend("Dayan", "Trabanco P.", "Dayan.TP@ehb.be","Dilbeek", "3BaDig-X"));
-
-        for(int i=1;i<4;i++){
-            friends.add(new Friend("Friend "+i, "lastname "+i, "friend"+i+".lastname"+i +"@ehb.be","Stad "+i, "3BaDig-X"));
-        }
-
+        friends = new ArrayList<>();
+        initializeFriendlist();
         RecyclerView rv = findViewById(R.id.friendlist);
         FriendsAdapter adapter = new FriendsAdapter(getApplicationContext(), friends);
         rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
@@ -75,5 +73,24 @@ public class FriendsActivity extends AppCompatActivity {
     @Override
     public boolean onNavigateUp() {
         return super.onNavigateUp();
+    }
+
+    private void initializeFriendlist(){
+        friends = new ArrayList<>();
+        friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
+        friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
+        friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
+        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
+        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
+        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    public ArrayList<Friend> getFriends() {
+        return friends;
     }
 }
