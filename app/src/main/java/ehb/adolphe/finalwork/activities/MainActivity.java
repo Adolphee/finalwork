@@ -15,15 +15,21 @@ import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
-import android.widget.ViewSwitcher;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.services.StudentService;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
+import ehb.adolphe.finalwork.model.Student;
 import ehb.adolphe.finalwork.model.Subject;
+import ehb.adolphe.finalwork.retrofit.RetrofitSingleton;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private FeatureCoverFlow coverFlow;
@@ -31,12 +37,13 @@ public class MainActivity extends AppCompatActivity {
     private List<Subject> subjectList = new ArrayList<>();
     private TextSwitcher mTitle;
 
-
+    public static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
@@ -79,8 +86,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //naar login gaan
 
+                //voor de service
+                onLoadStudenten();
+
                 //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-               // startActivity(intentLogin);
+                // startActivity(intentLogin);
 
                 //popup single or multi kiezen
                 startActivity(new Intent(MainActivity.this,ModeActivity.class));
@@ -128,5 +138,39 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    void onLoadStudenten() {
+
+        Retrofit retrofit = RetrofitSingleton.getInstance();
+
+        StudentService studentService = retrofit.create(StudentService.class);
+
+        Call<List<Student>> call = studentService.getAll();
+
+        call.enqueue(new Callback<List<Student>>() {
+            @Override
+            public void onResponse(Call<List<Student>> call, Response<List<Student>> response) {
+                if(!response.isSuccessful()) {
+                    Log.d(TAG, "onResponse: " + response.code());
+                    return;
+                }
+                List<Student> students = response.body();
+
+                for(Student student : students) {
+                    String content = "";
+                    content += "firstName" + student.getFirstname() + "\n";
+                    content += "email" + student.getEmail() + "\n";
+                    content += "firstName" + student.getFieldOfStudy()+ "\n";
+
+                    Log.d(TAG, "onResponse: " + content);
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Student>> call, Throwable t) {
+                Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
     }
 }
