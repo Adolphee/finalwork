@@ -20,6 +20,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.adapter.CourseAdapter;
+import ehb.adolphe.finalwork.model.Course;
 import ehb.adolphe.finalwork.services.StudentService;
 import ehb.adolphe.finalwork.adapter.SubjectAdapter;
 import ehb.adolphe.finalwork.model.Student;
@@ -33,8 +35,8 @@ import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
     private FeatureCoverFlow coverFlow;
-    private SubjectAdapter subjectAdapter;
-    private List<Subject> subjectList = new ArrayList<>();
+    private CourseAdapter courseAdapter;
+    private List<Course> courses = new ArrayList<>();
     private TextSwitcher mTitle;
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -43,8 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
 
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
@@ -63,15 +63,14 @@ public class MainActivity extends AppCompatActivity {
         Animation out = AnimationUtils.loadAnimation(this,R.anim.slide_out_bottom);
         mTitle.setInAnimation(in);
         mTitle.setOutAnimation(out);
-
-        subjectAdapter = new SubjectAdapter(subjectList,this);
+        courseAdapter = new CourseAdapter(courses,this);
         coverFlow = findViewById(R.id.coverFlow);
-        coverFlow.setAdapter(subjectAdapter);
+        coverFlow.setAdapter(courseAdapter);
 
         coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
             @Override
             public void onScrolledToPosition(int position) {
-                mTitle.setText("Take a quick " + subjectList.get(position).getName() + " quiz!");
+                mTitle.setText("Take a quick " + courses.get(position).getName() + " quiz!");
             }
 
             @Override
@@ -102,9 +101,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void initData() {
 
-        subjectList.add(new Subject("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
-        subjectList.add(new Subject("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
-        subjectList.add(new Subject("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
+        courses.add(new Course("C#","https://banner2.kisspng.com/20180831/iua/kisspng-c-programming-language-logo-microsoft-visual-stud-atlas-portfolio-5b89919299aab1.1956912415357423546294.jpg"));
+        courses.add(new Course("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
+        courses.add(new Course("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
     }
 
     @Override
