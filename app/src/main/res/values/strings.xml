@@ -42,4 +42,6 @@
     <string name="action_play">Play</string>
     <string name="action_home">Home</string>
     <string name="action_leaderboards">Leaderboards</string>
+    <string name="AddAFriend">Add a friend</string>
+    <string name="Add_a_friend">Add a friend</string>
 </resources>

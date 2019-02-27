@@ -130,14 +130,11 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
         this.friends = friends;
     }
 
-    private ArrayList<Friend> initializeFriendlist(){
+    public ArrayList<Friend> initializeFriendlist(){
         friends = new ArrayList<>();
         friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
         friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
         friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
-        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
-        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
-        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
         return friends;
     }
 }

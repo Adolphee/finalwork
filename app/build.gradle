@@ -1,6 +1,8 @@
 apply plugin: 'com.android.application'
 
 android {
+    // Previously there
+    // Add this next line
     compileSdkVersion 28
     defaultConfig {
         applicationId "ehb.adolphe.finalwork"
@@ -17,9 +19,14 @@ android {
         }
     }
     buildToolsVersion '28.0.3'
+    //compileOptions {
+    //    sourceCompatibility JavaVersion.VERSION_1_8
+    //    targetCompatibility JavaVersion.VERSION_1_8
+    //}
+    dataBinding.enabled = true
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = '1.8'
+        targetCompatibility = '1.8'
     }
 }
 
@@ -32,7 +39,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-
 
     //carousel
     implementation 'com.github.moondroid.coverflow:library:1.0'

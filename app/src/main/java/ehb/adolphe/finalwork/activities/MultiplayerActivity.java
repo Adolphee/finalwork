@@ -89,7 +89,7 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
 
     @Override
     public void onFragmentInteraction(Uri uri) {
-
+        // interfragment communicatie
     }
 
     /**
@@ -109,7 +109,7 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
 
         @Override
         public int getCount() {
-            // Show 3 total pages.
+            // Show Z total pages.
             return 2;
         }
     }
@@ -123,13 +123,11 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
         this.friends = friends;
     }
 
-    private void initializeFriendlist(){
+    public ArrayList<Friend> initializeFriendlist(){
         friends = new ArrayList<>();
         friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
         friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
         friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
-        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
-        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
-        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
+        return friends;
     }
 }

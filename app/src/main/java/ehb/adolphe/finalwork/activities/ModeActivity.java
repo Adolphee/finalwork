@@ -24,19 +24,9 @@ public class ModeActivity extends Activity {
         getWindow().setLayout((int) (width*.8),(int)(height*.5));
 
         Button solo = findViewById(R.id.solo);
-        solo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ModeActivity.this, GameActivity.class));
-            }
-        });
+        solo.setOnClickListener(v -> startActivity(new Intent(ModeActivity.this, GameActivity.class)));
 
         Button multiplayer = findViewById(R.id.multiplayer);
-        multiplayer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ModeActivity.this, MultiplayerActivity.class));
-            }
-        });
+        multiplayer.setOnClickListener(v -> startActivity(new Intent(ModeActivity.this, MultiplayerActivity.class)));
     }
 }

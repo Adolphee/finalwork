@@ -3,6 +3,7 @@ package ehb.adolphe.finalwork.activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,6 +36,9 @@ public class FriendsActivity extends AppCompatActivity implements OnFragmentInte
         FriendsAdapter adapter = new FriendsAdapter(getApplicationContext(), friends);
         rv.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         rv.setAdapter(adapter);
+
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(v -> startActivity(new Intent(FriendsActivity.this, AddFriendActivity.class)));
     }
 
     @Override
@@ -75,14 +79,12 @@ public class FriendsActivity extends AppCompatActivity implements OnFragmentInte
         return super.onNavigateUp();
     }
 
-    private void initializeFriendlist(){
+    public ArrayList<Friend> initializeFriendlist(){
         friends = new ArrayList<>();
         friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
         friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
         friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
-        friends.add(new Friend("Onur ", "Bugdayci", "Onur.bugdayci@ehb.be","Zele", "1BaDig-X"));
-        friends.add(new Friend("Ashot ", "Zijnachternaam", "Ashot.Zijnachternaam@ehb.be","Asse", "2BaDig-X"));
-        friends.add(new Friend("Brian ", "Wouters", "Brian.Wouters@ehb.be","Halle", "3BaDig-X"));
+        return friends;
     }
 
     @Override
