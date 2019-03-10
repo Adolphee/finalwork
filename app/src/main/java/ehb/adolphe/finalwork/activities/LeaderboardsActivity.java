@@ -11,16 +11,14 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
 import ehb.adolphe.finalwork.R;
-import ehb.adolphe.finalwork.fragments.LBFriendsFragment;
+import ehb.adolphe.finalwork.fragments.FSearchFragment;
+import ehb.adolphe.finalwork.fragments.FriendsFragment;
 import ehb.adolphe.finalwork.fragments.LBGlobalFragment;
 import ehb.adolphe.finalwork.fragments.OnFragmentInteractionListener;
 import ehb.adolphe.finalwork.model.Friend;
@@ -52,10 +50,9 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initializeFriendlist();
+        friends = FriendMgmtActivity.initializeFriendlist();
 
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
-        friends = new ArrayList<>();
 
         mViewPager = findViewById(R.id.lb_container);
         TabLayout tabLayout = findViewById(R.id.lb_tabs);
@@ -79,7 +76,7 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
 
         switch (id){
             case R.id.action_friends:
-                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                intent = new Intent(getApplicationContext(), FriendMgmtActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_profile:
@@ -112,7 +109,9 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
 
         @Override
         public Fragment getItem(int position) {
-            return position == 1? new LBFriendsFragment(): new LBGlobalFragment();
+            return position == 1?
+                    FriendsFragment.newInstance(FriendMgmtActivity.initializeFriendlist()):
+                    FSearchFragment.newInstance(FriendMgmtActivity.initializeGloballist());
         }
 
         @Override
@@ -123,18 +122,10 @@ public class LeaderboardsActivity extends AppCompatActivity implements OnFragmen
     }
 
     public ArrayList<Friend> getFriends() {
-        return initializeFriendlist();
+        return this.friends;
     }
 
     public void setFriends(ArrayList<Friend> friends) {
         this.friends = friends;
-    }
-
-    public ArrayList<Friend> initializeFriendlist(){
-        friends = new ArrayList<>();
-        friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
-        friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
-        friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
-        return friends;
     }
 }

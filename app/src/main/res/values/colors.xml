@@ -10,8 +10,10 @@
     <color name="White">#FFFFFF</color>
     <color name="dark_red">#530303</color>
     <color name="transparent_grey">#46000000</color>
+    <color name="midnight_red">#530303</color>
     <color name="midnight_grey">#26263D</color>
     <color name="blue">#008EFF</color>
     <color name="afternoon_grey">#2f2f45</color>
+    <color name="afternoon_red">#611B1B</color>
     <color name="black">#000000</color>
 </resources>

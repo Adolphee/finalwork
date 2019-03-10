@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.fragments.FriendsFragment;
 import ehb.adolphe.finalwork.fragments.MPFriendsFragment;
 import ehb.adolphe.finalwork.fragments.MPRandomFragment;
 import ehb.adolphe.finalwork.fragments.OnFragmentInteractionListener;
@@ -47,7 +48,7 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
-        initializeFriendlist();
+        friends = FriendMgmtActivity.initializeFriendlist();
         mViewPager = findViewById(R.id.mp_container);
         TabLayout tabLayout = findViewById(R.id.mp_tabs);
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -71,7 +72,7 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
 
         switch (id){
             case R.id.action_friends:
-                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                intent = new Intent(getApplicationContext(), FriendMgmtActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_profile:
@@ -104,7 +105,7 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
 
         @Override
         public Fragment getItem(int position) {
-            return position == 0? new MPFriendsFragment(): new MPRandomFragment();
+            return position == 0? FriendsFragment.newInstance(friends): new MPRandomFragment();
         }
 
         @Override
@@ -121,13 +122,5 @@ public class MultiplayerActivity extends AppCompatActivity implements OnFragment
 
     public void setFriends(ArrayList<Friend> friends) {
         this.friends = friends;
-    }
-
-    public ArrayList<Friend> initializeFriendlist(){
-        friends = new ArrayList<>();
-        friends.add(new Friend("Dayan ", "Trabanco", "Dayan.Trabanco@ehb.be","Dilbeek", "3BaDig-X"));
-        friends.add(new Friend("Adolphe ", "Mk.", "Adolphe.Mk@ehb.be","Aalst", "3BaDig-X"));
-        friends.add(new Friend("Katrien ", "Van Melle", "Katrien.Vanmelle@ehb.be","Brussel", "2BaDig-X"));
-        return friends;
     }
 }

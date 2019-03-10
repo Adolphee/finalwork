@@ -41,7 +41,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.action_friends:
-                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                intent = new Intent(getApplicationContext(), FriendMgmtActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_play:

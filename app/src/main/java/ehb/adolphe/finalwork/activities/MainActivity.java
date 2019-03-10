@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 public class MainActivity extends AppCompatActivity {
     private FeatureCoverFlow coverFlow;
     private CourseAdapter courseAdapter;
-    private List<Course> courses = new ArrayList<>();
+    private ArrayList<Course> courses = new ArrayList<>();
     private TextSwitcher mTitle;
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        initData();
+        courses = initData();
         //onLoadCourses();
 
         mTitle = findViewById(R.id.title);
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void initData() {
-
+    public static ArrayList<Course> initData() {
+        ArrayList<Course> courses = new ArrayList<>();
         courses.add(new Course("C#","https://camo.githubusercontent.com/0617f4657fef12e8d16db45b8d73def73144b09f/68747470733a2f2f646576656c6f7065722e6665646f726170726f6a6563742e6f72672f7374617469632f6c6f676f2f6373686172702e706e67"));
         courses.add(new Course("Html","https://cdn0.iconfinder.com/data/icons/HTML5/512/HTML_Logo.png"));
         courses.add(new Course("C++","https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.png"));
@@ -115,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         courses.add(new Course("Android","http://pngimg.com/uploads/android_logo/android_logo_PNG34.png"));
         courses.add(new Course("Swift","https://www.symphony-solutions.eu/wp-content/uploads/2018/04/programming-language-swift.png"));
         courses.add(new Course("React","https://neoteric.eu/wp-content/uploads/2015/08/react-logo-300x300.png"));
+        return courses;
     }
 
     @Override
@@ -130,7 +131,7 @@ public class MainActivity extends AppCompatActivity {
 
         switch (id){
             case R.id.action_friends:
-                intent = new Intent(getApplicationContext(), FriendsActivity.class);
+                intent = new Intent(getApplicationContext(), FriendMgmtActivity.class);
                 startActivity(intent);
                 return true;
             case R.id.action_profile:

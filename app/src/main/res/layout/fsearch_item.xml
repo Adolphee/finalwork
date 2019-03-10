@@ -3,7 +3,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:padding="7.5dp"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:layout_marginTop="10dp">
 
             <ImageView
                 android:id="@+id/book_img"
@@ -30,7 +34,7 @@
                         android:layout_height="34dp"
                         android:foregroundTint="@color/midnight_grey"
                         android:gravity="center"
-                        android:text="Dayan Trabanco P."
+                        android:text="Adolphe Munyankumburwa"
                         android:textAlignment="center"
                         android:textColor="@color/White"
                         android:textSize="13sp" />
@@ -41,7 +45,7 @@
                         android:layout_height="34dp"
                         android:foregroundTint="@color/midnight_grey"
                         android:gravity="center"
-                        android:text="Dayan.Trabanco.Perez@student.ehb.be"
+                        android:text="Adolphe.Mu@student.ehb.be"
                         android:textAlignment="center"
                         android:textColor="@color/White"
                         android:textSize="13sp" />
@@ -49,12 +53,13 @@
 
 
                 <Button
+                    android:id="@+id/play_add_button"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_marginRight="0dp"
                     android:layout_weight="0.25"
                     android:background="@color/green"
-                    android:text="Play"
+                    android:text="ADD"
                     android:textColor="@color/midnight_grey"
                     android:textSize="20sp"
                     android:clickable="true"/>

@@ -1,24 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:cardview="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/bookcard"
-    android:layout_width="match_parent"
-    android:layout_height="70dp"
-    android:layout_margin="7.5dp"
-    android:clickable="true"
-    android:foreground="?android:attr/selectableItemBackground"
-    cardview:cardCornerRadius="20dp"
-    cardview:cardElevation="20dp"
-    android:layout_marginTop="10dp">
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="70dp"
-        android:orientation="horizontal"
-        tools:layout_editor_absoluteX="163dp"
-        tools:layout_editor_absoluteY="0dp"
-        android:background="@color/White">
+        android:layout_height="wrap_content"
+        android:padding="7.5dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:layout_marginTop="10dp">
 
         <ImageView
             android:id="@+id/book_img"
@@ -45,7 +34,7 @@
                     android:layout_height="34dp"
                     android:foregroundTint="@color/midnight_grey"
                     android:gravity="center"
-                    android:text="Dayan Trabanco P."
+                    android:text="Adolphe Munyankumburwa"
                     android:textAlignment="center"
                     android:textColor="@color/White"
                     android:textSize="13sp" />
@@ -56,7 +45,7 @@
                     android:layout_height="34dp"
                     android:foregroundTint="@color/midnight_grey"
                     android:gravity="center"
-                    android:text="Dayan.Trabanco.Perez@student.ehb.be"
+                    android:text="Adolphe.Mu@student.ehb.be"
                     android:textAlignment="center"
                     android:textColor="@color/White"
                     android:textSize="13sp" />
@@ -64,6 +53,7 @@
 
 
             <Button
+                android:id="@+id/play_add_button"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_marginRight="0dp"
@@ -77,4 +67,4 @@
 
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+</layout>
