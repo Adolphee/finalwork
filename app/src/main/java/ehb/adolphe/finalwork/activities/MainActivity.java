@@ -22,11 +22,9 @@ import java.util.List;
 import ehb.adolphe.finalwork.R;
 import ehb.adolphe.finalwork.adapter.CourseAdapter;
 import ehb.adolphe.finalwork.model.Course;
-import ehb.adolphe.finalwork.services.CourseService;
-import ehb.adolphe.finalwork.services.StudentService;
-import ehb.adolphe.finalwork.adapter.SubjectAdapter;
+import ehb.adolphe.finalwork.retrofit.services.CourseService;
+import ehb.adolphe.finalwork.retrofit.services.StudentService;
 import ehb.adolphe.finalwork.model.Student;
-import ehb.adolphe.finalwork.model.Subject;
 import ehb.adolphe.finalwork.retrofit.RetrofitSingleton;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 import retrofit2.Call;
@@ -34,10 +32,12 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-public class MainActivity extends AppCompatActivity {
+
+public class MainActivity extends AppCompatActivity{
     private FeatureCoverFlow coverFlow;
     private CourseAdapter courseAdapter;
-    private ArrayList<Course> courses = new ArrayList<>();
+    public static ArrayList<Course> courses = new ArrayList<>();
+    public static Student AUTH_USER = null;
     private TextSwitcher mTitle;
 
     public static final String TAG = MainActivity.class.getSimpleName();
@@ -45,61 +45,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        Toolbar toolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        courses = initData();
-        //onLoadCourses();
-
-        mTitle = findViewById(R.id.title);
-        mTitle.setFactory(() -> {
-            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
-            TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
-            txt.setTextSize(30);;
-            txt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
-            return txt;
-        });
-        Animation in = AnimationUtils.loadAnimation(this,R.anim.slide_in_top);
-        Animation out = AnimationUtils.loadAnimation(this,R.anim.slide_out_bottom);
-        mTitle.setInAnimation(in);
-        mTitle.setOutAnimation(out);
-        courseAdapter = new CourseAdapter(courses,this);
-        coverFlow = findViewById(R.id.coverFlow);
-        coverFlow.setAdapter(courseAdapter);
-
-        coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
-            @Override
-            public void onScrolledToPosition(int position) {
-                mTitle.setText("Take a quick " + courses.get(position).getName() + " quiz!");
-            }
-
-            @Override
-            public void onScrolling() {
-
-            }
-        });
-
-        //als je op foto drukt zal er iets gebeuren.
-        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //naar login gaan
-
-                //voor de service
-                onLoadStudenten();
-
-                //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                // startActivity(intentLogin);
-
-                //popup single or multi kiezen
-                startActivity(new Intent(MainActivity.this,ModeActivity.class));
-                overridePendingTransition(R.anim.slide_popup_down, 0);
-
-            }
-        });
+        if(AUTH_USER == null) {
+            Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+            startActivity(intent);
+        } else {
+            setContentView(R.layout.activity_main);
+            Toolbar toolbar = findViewById(R.id.main_toolbar);
+            setSupportActionBar(toolbar);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            onLoadCourses();
+        }
     }
 
     public static ArrayList<Course> initData() {
@@ -200,19 +155,61 @@ public class MainActivity extends AppCompatActivity {
                     Log.d(TAG, "onResponse: " + response.code());
                     return;
                 }
-                List<Course> courses2 = response.body();
-
-                for(Course course : courses2) {
-
-                    courses.add(new Course(course.getName() , course.getImageUrl()));
-
-                    Log.d(TAG, "onResponse: " + course.getName());
-                }
+                courses = new ArrayList<Course>(response.body());
+                updateCourses(courses);
             }
 
             @Override
             public void onFailure(Call<List<Course>> call, Throwable t) {
                 Log.d(TAG, "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void updateCourses(ArrayList<Course> courses) {
+        mTitle = findViewById(R.id.title);
+        mTitle.setFactory(() -> {
+            LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
+            TextView txt = (TextView)inflater.inflate(R.layout.layout_title,null);
+            txt.setTextSize(30);;
+            txt.setTextAlignment(View.TEXT_ALIGNMENT_CENTER);
+            return txt;
+        });
+        Animation in = AnimationUtils.loadAnimation(MainActivity.this,R.anim.slide_in_top);
+        Animation out = AnimationUtils.loadAnimation(MainActivity.this,R.anim.slide_out_bottom);
+        mTitle.setInAnimation(in);
+        mTitle.setOutAnimation(out);
+        courseAdapter = new CourseAdapter(courses,MainActivity.this);
+        coverFlow = findViewById(R.id.coverFlow);
+        coverFlow.setAdapter(courseAdapter);
+
+        coverFlow.setOnScrollPositionListener(new FeatureCoverFlow.OnScrollPositionListener() {
+            @Override
+            public void onScrolledToPosition(int position) {
+                mTitle.setText("Take a quick " + courses.get(position).getName() + " quiz!");
+            }
+
+            @Override
+            public void onScrolling() {
+
+            }
+        });
+
+        //als je op foto drukt zal er iets gebeuren.
+        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //naar login gaan
+
+                //voor de service
+                onLoadStudenten();
+
+                //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                // startActivity(intentLogin);
+
+                //popup single or multi kiezen
+                startActivity(new Intent(MainActivity.this,ModeActivity.class));
+                overridePendingTransition(R.anim.slide_popup_down, 0);
             }
         });
     }

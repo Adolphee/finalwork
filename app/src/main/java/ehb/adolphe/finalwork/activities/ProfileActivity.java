@@ -7,17 +7,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.TextView;
 
 import ehb.adolphe.finalwork.R;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    Toolbar toolbar;
+    TextView
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        Toolbar toolbar = findViewById(R.id.profile_toolbar);
+        toolbar = findViewById(R.id.profile_toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         Button lbButton = findViewById(R.id.btn_PLeaderboards);
@@ -55,5 +59,10 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    initContent(){
+        toolbar.setSubtitle(MainActivity.AUTH_USER.getFirstname());
+
     }
 }

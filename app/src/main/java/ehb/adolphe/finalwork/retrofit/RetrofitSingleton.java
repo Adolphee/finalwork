@@ -10,7 +10,7 @@ public class RetrofitSingleton {
     public static Retrofit getInstance(){
         if(retrofit == null){
             retrofit = new Retrofit.Builder()
-                    .baseUrl("http://192.168.0.15:8080/")
+                    .baseUrl("http://10.0.0.17:8080/api/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
