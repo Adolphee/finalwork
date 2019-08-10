@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.MainActivity"
-    android:background="@color/midnight_grey">
+    android:background="@drawable/dialog_corner_radius2">
 
 
     <FrameLayout

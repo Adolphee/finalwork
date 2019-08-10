@@ -4,7 +4,7 @@
     android:id="@+id/nestedScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/midnight_grey"
+    android:background="@color/White"
     tools:context=".activities.LoginActivity">
 
     <android.support.v7.widget.LinearLayoutCompat
@@ -12,29 +12,36 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatImageView
-            android:layout_width="125dp"
-            android:layout_height="125dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+        <ImageView
+            android:id="@+id/background"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
             android:src="@drawable/ehblogo"
-            android:contentDescription="logo"/>
+            android:background="@color/White"
+            />
 
         <android.support.design.widget.TextInputLayout
             android:id="@+id/textInputLayoutEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp">
+            android:layout_marginTop="40dp"
+            android:textColorHint="@color/midnight_grey"
+            android:outlineAmbientShadowColor="@color/White"
+            android:textAlignment="center"
+            android:textColorHighlight="@color/green">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextEmail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_email"
-                android:textColorHint="@color/White"
+                android:textAlignment="center"
                 android:inputType="text"
                 android:maxLines="1"
-                android:textColor="@color/White"/>
+                android:textColor="@color/midnight_grey"
+                android:textColorHint="@color/White"
+                android:textColorHighlight="@color/green"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -42,17 +49,22 @@
             android:id="@+id/textInputLayoutPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="20dp"
+            android:textColorHint="@color/midnight_grey"
+            android:textAlignment="center"
+            android:textColorHighlight="@color/green">
 
             <android.support.design.widget.TextInputEditText
                 android:id="@+id/textInputEditTextPassword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/hint_password"
-                android:textColorHint="@color/White"
+                android:textAlignment="center"
+                android:textColorHint="@color/midnight_grey"
                 android:inputType="textPassword"
                 android:maxLines="1"
-                android:textColor="@color/White"/>
+                android:textColor="@color/midnight_grey"
+                android:textColorHighlight="@color/green"/>
 
         </android.support.design.widget.TextInputLayout>
 
@@ -78,7 +90,7 @@
             android:layout_marginRight="8dp"
             android:layout_marginBottom="8dp"
             android:text="@string/text_remember_me"
-            android:textColor="@color/White" />
+            android:textColor="@color/midnight_grey" />
     </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.v4.widget.NestedScrollView >

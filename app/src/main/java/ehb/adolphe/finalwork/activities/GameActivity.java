@@ -52,15 +52,30 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     public void onClick(View v) {
         String str = v.getTag().toString();
+        View activ = findViewById(R.id.game_layout);
 
         switch (Integer.parseInt(str)) {
             case 1:
+                activ.setBackgroundResource(R.drawable.quiz_correct);
+                activ.setBackground(getDrawable(R.drawable.quiz_correct));
                 Toast.makeText(getApplicationContext(),"CORRECT !!!  + 5",Toast.LENGTH_SHORT).show();
-                if(currentQuiz.nextQuestion()) updateQuizScreen();
+                try {
+                    Thread.sleep(500);
+                    if(currentQuiz.nextQuestion()) updateQuizScreen();
+                } catch (InterruptedException e) {
+                    Log.e("SLEEP", e.getMessage());
+                }
                 break;
             case 0:
+                activ.setBackgroundResource(R.drawable.quiz_wrong);
+                activ.setBackground(getDrawable(R.drawable.quiz_wrong));
                 Toast.makeText(getApplicationContext(),"WRONG !!!  - 5",Toast.LENGTH_SHORT).show();
-                if(currentQuiz.nextQuestion()) updateQuizScreen();
+                try {
+                    Thread.sleep(500);
+                    if(currentQuiz.nextQuestion()) updateQuizScreen();
+                } catch (InterruptedException e) {
+                    Log.e("SLEEP", e.getMessage());
+                }
                 break;
             default:
                 break;
@@ -94,6 +109,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     void updateQuizScreen(){
         if(currentQuiz.getPosition() > 0) parent.removeAllViews();
 
+        View activ = findViewById(R.id.game_layout);
         Question q = currentQuiz.getQuestions().get(currentQuiz.getPosition());
         question_tv.setText(q.getQuestion());
         for(int i = 0 ; i < q.getAnswers().size()  ; i++) {

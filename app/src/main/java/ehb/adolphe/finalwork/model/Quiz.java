@@ -11,6 +11,8 @@ public class Quiz {
     private List<Question> questions;
 
     private Integer position = 0;
+    private Integer score = 0;
+    private Integer experience = 0;
 
 
     public List<Question> getQuestions() { return questions; }
