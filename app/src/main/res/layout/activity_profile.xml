@@ -83,13 +83,13 @@
                     app:layout_constraintTop_toBottomOf="@+id/ratingBar">
 
                     <TextView
-                        android:id="@+id/textView2"
+                        android:id="@+id/currentLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Exp"
+                        android:text="Level 22"
                         android:textColor="@color/White"
                         app:layout_constraintEnd_toStartOf="@+id/progressBar"
-                        tools:layout_editor_absoluteY="270dp" />
+                        tools:layout_editor_absoluteY="270dp"/>
 
                     <ProgressBar
                         android:id="@+id/progressBar"
@@ -99,7 +99,7 @@
                         android:layout_marginStart="8dp"
                         android:layout_marginEnd="8dp"
                         android:max="100"
-                        android:progress="75"
+                        android:progress="65"
                         android:progressTint="@color/green"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.493"
@@ -107,10 +107,10 @@
                         app:layout_constraintTop_toBottomOf="@+id/ratingBar" />
 
                     <TextView
-                        android:id="@+id/textView3"
+                        android:id="@+id/nextLevel"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Lvl 23"
+                        android:text="23"
                         android:textColor="@color/White"
                         app:layout_constraintStart_toEndOf="@+id/progressBar"
                         tools:layout_editor_absoluteY="270dp" />
@@ -144,8 +144,8 @@
                             android:id="@+id/editText1"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".50"
-                            android:ems="10"
+                            android:layout_weight=".1"
+                            android:ems="5"
                             android:enabled="false"
                             android:inputType="textPersonName"
                             android:text="Naam"
@@ -154,30 +154,18 @@
                             tools:layout_editor_absoluteY="309dp" />
 
                         <EditText
-                            android:id="@+id/editText4"
+                            android:id="@+id/fullname"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".30"
-                            android:ems="10"
+                            android:layout_weight=".5"
+                            android:ems="5"
                             android:enabled="false"
                             android:inputType="textPersonName"
-                            android:text="Adolphe"
+                            android:text="Adolphe Mk"
                             android:textColor="@color/White"
                             tools:layout_editor_absoluteX="98dp"
-                            tools:layout_editor_absoluteY="309dp" />
-
-                        <EditText
-                            android:id="@+id/editText7"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight=".20"
-                            android:ems="10"
-                            android:enabled="false"
-                            android:inputType="textPersonName"
-                            android:text="Mk"
-                            android:textColor="@color/White"
-                            tools:layout_editor_absoluteX="98dp"
-                            tools:layout_editor_absoluteY="343dp" />
+                            tools:layout_editor_absoluteY="309dp"
+                            android:textAlignment="textEnd"/>
                     </LinearLayout>
 
 
@@ -190,7 +178,7 @@
                             android:id="@+id/editText11"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".50"
+                            android:layout_weight=".15"
                             android:ems="10"
                             android:enabled="false"
                             android:inputType="textPersonName"
@@ -200,17 +188,18 @@
                             tools:layout_editor_absoluteY="309dp" />
 
                         <EditText
-                            android:id="@+id/editText5"
+                            android:id="@+id/studies"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".50"
+                            android:layout_weight=".5"
                             android:ems="10"
                             android:enabled="false"
                             android:inputType="textPersonName"
                             android:text="3 BaDig-X"
                             android:textColor="@color/White"
                             tools:layout_editor_absoluteX="98dp"
-                            tools:layout_editor_absoluteY="309dp" />
+                            tools:layout_editor_absoluteY="309dp"
+                            android:textAlignment="textEnd"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -222,27 +211,31 @@
                             android:id="@+id/editText9"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".50"
+                            android:layout_weight=".1"
                             android:ems="10"
                             android:enabled="false"
                             android:inputType="textPersonName"
-                            android:text="Woont in"
+                            android:text="Slogan"
                             android:textColor="@color/blue"
                             tools:layout_editor_absoluteX="98dp"
                             tools:layout_editor_absoluteY="309dp" />
 
                         <EditText
-                            android:id="@+id/editText10"
+                            android:id="@+id/slogan"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".50"
                             android:ems="10"
                             android:enabled="false"
                             android:inputType="textPersonName"
-                            android:text="Aalst"
+                            android:text="To win or not to lose?"
                             android:textColor="@color/White"
                             tools:layout_editor_absoluteX="98dp"
-                            tools:layout_editor_absoluteY="343dp" />
+                            tools:layout_editor_absoluteY="343dp"
+                            android:textAlignment="textEnd"
+                            android:singleLine="false"
+                            android:ellipsize="end"
+                            />
                     </LinearLayout>
 
                     <LinearLayout
@@ -254,7 +247,7 @@
                             android:id="@+id/editText2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_weight=".50"
+                            android:layout_weight=".1"
                             android:ems="10"
                             android:enabled="false"
                             android:inputType="textPersonName"
@@ -264,7 +257,7 @@
                             tools:layout_editor_absoluteY="309dp"/>
 
                         <EditText
-                            android:id="@+id/editText3"
+                            android:id="@+id/email"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_weight=".50"
@@ -274,7 +267,8 @@
                             android:text="Adolphe.mk@ehb.be"
                             android:textColor="@color/White"
                             tools:layout_editor_absoluteX="98dp"
-                            tools:layout_editor_absoluteY="309dp" />
+                            tools:layout_editor_absoluteY="309dp"
+                            android:textAlignment="textEnd"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -285,7 +279,7 @@
                         android:paddingBottom="3dp">
 
                         <Button
-                            android:id="@+id/button9"
+                            android:id="@+id/btn_statistics"
                             style="@style/Widget.AppCompat.Button.Colored"
                             android:layout_width="130dp"
                             android:layout_height="49dp"

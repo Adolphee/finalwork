@@ -24,7 +24,13 @@ public class ModeActivity extends Activity {
         getWindow().setLayout((int) (width*.8),(int)(height*.5));
 
         Button solo = findViewById(R.id.solo);
-        solo.setOnClickListener(v -> startActivity(new Intent(ModeActivity.this, GameActivity.class)));
+        solo.setOnClickListener(v -> {
+            Intent intent = new Intent(ModeActivity.this, GameActivity.class);
+            if(getIntent().getExtras().getString("subject") != null){
+                intent.putExtra("subject", getIntent().getExtras().getString("subject"));
+            }
+            startActivity(intent);
+        });
 
         Button multiplayer = findViewById(R.id.multiplayer);
         multiplayer.setOnClickListener(v -> startActivity(new Intent(ModeActivity.this, MultiplayerActivity.class)));

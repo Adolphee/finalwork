@@ -12,9 +12,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.AdapterView;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
+
+import com.google.gson.Gson;
+import com.google.gson.JsonSerializer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +27,7 @@ import ehb.adolphe.finalwork.model.Course;
 import ehb.adolphe.finalwork.retrofit.services.CourseService;
 import ehb.adolphe.finalwork.retrofit.services.StudentService;
 import ehb.adolphe.finalwork.model.Student;
-import ehb.adolphe.finalwork.retrofit.RetrofitSingleton;
+import ehb.adolphe.finalwork.retrofit.RetroHelper;
 import it.moondroid.coverflow.components.ui.containers.FeatureCoverFlow;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -52,7 +54,6 @@ public class MainActivity extends AppCompatActivity{
             setContentView(R.layout.activity_main);
             Toolbar toolbar = findViewById(R.id.main_toolbar);
             setSupportActionBar(toolbar);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             onLoadCourses();
         }
     }
@@ -108,7 +109,7 @@ public class MainActivity extends AppCompatActivity{
 
     void onLoadStudenten() {
 
-        Retrofit retrofit = RetrofitSingleton.getInstance();
+        Retrofit retrofit = RetroHelper.getInstance();
 
         StudentService studentService = retrofit.create(StudentService.class);
 
@@ -142,7 +143,7 @@ public class MainActivity extends AppCompatActivity{
 
     void onLoadCourses() {
 
-        Retrofit retrofit = RetrofitSingleton.getInstance();
+        Retrofit retrofit = RetroHelper.getInstance();
 
         CourseService courseService = retrofit.create(CourseService.class);
 
@@ -196,21 +197,10 @@ public class MainActivity extends AppCompatActivity{
         });
 
         //als je op foto drukt zal er iets gebeuren.
-        coverFlow.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                //naar login gaan
-
-                //voor de service
-                onLoadStudenten();
-
-                //Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
-                // startActivity(intentLogin);
-
-                //popup single or multi kiezen
-                startActivity(new Intent(MainActivity.this,ModeActivity.class));
-                overridePendingTransition(R.anim.slide_popup_down, 0);
-            }
+        coverFlow.setOnItemClickListener((parent, view, position, id) -> {
+            Intent intent = new Intent(MainActivity.this, ModeActivity.class);
+            intent.putExtra("subject", new Gson().toJson(courses.get(position)));
+            startActivity(intent);
         });
     }
 }

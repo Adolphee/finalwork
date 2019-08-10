@@ -12,12 +12,10 @@ import android.support.v7.widget.AppCompatCheckBox;
 import android.util.Log;
 import android.view.View;
 
-import java.util.List;
-
 import ehb.adolphe.finalwork.R;
 import ehb.adolphe.finalwork.model.LoginForm;
 import ehb.adolphe.finalwork.model.Student;
-import ehb.adolphe.finalwork.retrofit.RetrofitSingleton;
+import ehb.adolphe.finalwork.retrofit.RetroHelper;
 import ehb.adolphe.finalwork.retrofit.services.StudentService;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -132,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     }
     
     void onSubmitLogin(){
-        Retrofit retrofit = RetrofitSingleton.getInstance();
+        Retrofit retrofit = RetroHelper.getInstance();
 
         StudentService studentService = retrofit.create(StudentService.class);
 
