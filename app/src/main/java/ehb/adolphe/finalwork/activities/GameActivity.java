@@ -5,61 +5,106 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import ehb.adolphe.finalwork.R;
+import ehb.adolphe.finalwork.model.Answer;
+import ehb.adolphe.finalwork.model.Course;
+import ehb.adolphe.finalwork.model.Question;
+import ehb.adolphe.finalwork.model.Quiz;
+import ehb.adolphe.finalwork.retrofit.RetroHelper;
+import ehb.adolphe.finalwork.retrofit.services.QuizService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class GameActivity extends AppCompatActivity implements View.OnClickListener {
     LinearLayout parent;
     Button b1;
     String[] btn_name={"answer1" , "answer2","answer3" , "answer4"};
+    TextView question_tv;
+    public static Quiz currentQuiz;
+    Course course;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-
         parent = findViewById(R.id.ll_parent);
-
-
-        for(int i = 0 ; i < btn_name.length ; i++) {
-
-            b1 = new Button(GameActivity.this);
-            b1.setId(i + 1);
-            b1.setText(btn_name[i]);
-            b1.setTag(i);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            // b1.setBackgroundColor(Color.parseColor("#008EFF"));
-            //b1.setTextColor(Color.WHITE);
-            parent.addView(b1 ,lp);
-            b1.setOnClickListener(GameActivity.this);
-        }
+        question_tv = findViewById(R.id.question);
+        course = new Gson().fromJson(getIntent().getStringExtra("subject"), Course.class);
+        getQuiz(course.getId());
     }
 
     @Override
     public void onClick(View v) {
         String str = v.getTag().toString();
 
-        switch (str) {
-            case "0":
-                Toast.makeText(getApplicationContext(),btn_name[0],Toast.LENGTH_SHORT).show();
+        switch (Integer.parseInt(str)) {
+            case 1:
+                Toast.makeText(getApplicationContext(),"CORRECT !!!  + 5",Toast.LENGTH_SHORT).show();
+                if(currentQuiz.nextQuestion()) updateQuizScreen();
                 break;
-            case "1":
-                Toast.makeText(getApplicationContext(),btn_name[1],Toast.LENGTH_SHORT).show();
+            case 0:
+                Toast.makeText(getApplicationContext(),"WRONG !!!  - 5",Toast.LENGTH_SHORT).show();
+                if(currentQuiz.nextQuestion()) updateQuizScreen();
                 break;
-            case "2": {
-                Toast.makeText(getApplicationContext(),btn_name[2],Toast.LENGTH_SHORT).show();
+            default:
                 break;
+        }
+    }
+
+    void getQuiz(Long course_id){
+        Retrofit retrofit = RetroHelper.getInstance();
+        QuizService courseService = retrofit.create(QuizService.class);
+
+        Call<Quiz> call = courseService.getQuizByCourseId(course_id);
+
+        call.enqueue(new Callback<Quiz>() {
+            @Override
+            public void onResponse(Call<Quiz> call, Response<Quiz> response) {
+                if(!response.isSuccessful()) {
+                    Log.d("QUIZ", "onResponse: " + response.code());
+                    return;
+                }
+                currentQuiz = response.body();
+                updateQuizScreen();
             }
-            case "3": {
-                Toast.makeText(getApplicationContext(),btn_name[3],Toast.LENGTH_SHORT).show();
-                break;
+
+            @Override
+            public void onFailure(Call<Quiz> call, Throwable t) {
+                Log.e("QUIZ", "onFailure: " + t.getMessage());
             }
+        });
+    }
+
+    void updateQuizScreen(){
+        if(currentQuiz.getPosition() > 0) parent.removeAllViews();
+
+        Question q = currentQuiz.getQuestions().get(currentQuiz.getPosition());
+        question_tv.setText(q.getQuestion());
+        for(int i = 0 ; i < q.getAnswers().size()  ; i++) {
+            Answer a = q.getAnswers().get(i);
+            b1 = new Button(GameActivity.this);
+            b1.setId(i + 1);
+            b1.setText(a.getWhat());
+            b1.setTag(a.getCorrect()? 1: 0);
+            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+            parent.addView(b1 ,lp);
+            b1.setOnClickListener(GameActivity.this);
         }
     }
 }

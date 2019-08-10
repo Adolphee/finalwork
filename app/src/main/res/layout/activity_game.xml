@@ -23,7 +23,7 @@
 
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/question"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -32,7 +32,7 @@
         android:layout_marginBottom="8dp"
         android:background="@color/transparent_grey"
         android:padding="10dp"
-        android:text="Question : Lorem ipsum doloris ik heb geen idee wat er daarna komt maar ik ben een coole boi dus ik kan ez shit schrijven om een kei lange vraag te maken en zo het scherm te vullen"
+        android:text="Question : Lorem ipsum"
         android:textColor="@color/White"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"

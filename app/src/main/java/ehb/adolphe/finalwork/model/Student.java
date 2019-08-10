@@ -4,6 +4,8 @@ package ehb.adolphe.finalwork.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
+
 
 public class Student {
 
@@ -21,7 +23,7 @@ public class Student {
     private Integer progressyear;
     @SerializedName("birthDate")
     @Expose
-    private Object birthDate;
+    private Date birthDate;
     @SerializedName("email")
     @Expose
     private String email;
@@ -33,16 +35,16 @@ public class Student {
     private String password;
     @SerializedName("salt")
     @Expose
-    private Object salt;
+    private String salt;
     @SerializedName("rank")
     @Expose
-    private Object rank;
+    private Integer rank;
     @SerializedName("experience")
     @Expose
-    private Object experience;
+    private Long experience;
     @SerializedName("slogan")
     @Expose
-    private Object slogan;
+    private String slogan;
     @SerializedName("id")
     @Expose
     private Integer id;
@@ -85,11 +87,11 @@ public class Student {
         this.progressyear = progressyear;
     }
 
-    public Object getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(Object birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -117,35 +119,35 @@ public class Student {
         this.password = password;
     }
 
-    public Object getSalt() {
+    public String getSalt() {
         return salt;
     }
 
-    public void setSalt(Object salt) {
+    public void setSalt(String salt) {
         this.salt = salt;
     }
 
-    public Object getRank() {
+    public Integer getRank() {
         return rank;
     }
 
-    public void setRank(Object rank) {
+    public void setRank(Integer rank) {
         this.rank = rank;
     }
 
-    public Object getExperience() {
+    public Long getExperience() {
         return experience;
     }
 
-    public void setExperience(Object experience) {
+    public void setExperience(Long experience) {
         this.experience = experience;
     }
 
-    public Object getSlogan() {
+    public String getSlogan() {
         return slogan;
     }
 
-    public void setSlogan(Object slogan) {
+    public void setSlogan(String slogan) {
         this.slogan = slogan;
     }
 
