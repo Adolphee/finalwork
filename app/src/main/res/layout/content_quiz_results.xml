@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".activities.QuizResultsActivity"
+    tools:showIn="@layout/activity_quiz_results">
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="0dp">
+
+        <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:id="@+id/scrollView2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/midnight_grey"
+            tools:context=".activities.ProfileActivity">
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/imageButton"
+                    android:layout_width="133dp"
+                    android:layout_height="133dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:backgroundTint="@color/midnight_grey"
+                    android:src="@drawable/ic_mood_green_133dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.093"/>
+
+                <RatingBar
+                    android:id="@+id/ratingBar"
+                    android:layout_width="250dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="260dp"
+                    android:layout_marginEnd="80dp"
+                    android:hapticFeedbackEnabled="true"
+                    android:numStars="5"
+                    android:progressTint="@color/yellow"
+                    android:rating="3.5"
+                    android:secondaryProgressTint="@color/orange"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/username"
+                    android:layout_width="92dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="152dp"
+                    android:layout_marginEnd="8dp"
+                    android:gravity="center"
+                    android:text="Een_Broer"
+                    android:textColor="@color/White"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.973"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="711dp"
+                    android:layout_height="39dp"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.533"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageButton">
+
+                    <TextView
+                        android:id="@+id/currentLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="22"
+                        android:textColor="@color/White"
+                        app:layout_constraintEnd_toStartOf="@+id/progressBar"
+                        tools:layout_editor_absoluteY="270dp" />
+
+                    <ProgressBar
+                        android:id="@+id/progressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="289dp"
+                        android:layout_height="27dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:max="5000"
+                        android:progress="2165"
+                        android:progressTint="@color/green"
+                        android:scaleY="5"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.493"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/ratingBar"
+                        android:background="@color/transparent_grey"/>
+
+                    <TextView
+                        android:id="@+id/nextLevel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="23"
+                        android:textColor="@color/White"
+                        app:layout_constraintStart_toEndOf="@+id/progressBar"
+                        tools:layout_editor_absoluteY="270dp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/details_container"
+                    android:layout_width="375dp"
+                    android:layout_height="425dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@color/transparent_grey"
+                    android:fadeScrollbars="false"
+                    android:fadingEdge="none"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp"
+                    android:requiresFadingEdge="none"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText1"
+                            android:layout_width="2dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".1"
+                            android:ems="5"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/score"
+                            android:textColor="@color/green"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/score"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:ems="5"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="15/20"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText11"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".15"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/course"
+                            android:textColor="@color/green"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/course"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="Operating Systems"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText9"
+                            android:layout_width="79dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".1"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/experience"
+                            android:textColor="@color/green"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/experience"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ellipsize="end"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:singleLine="false"
+                            android:text="1546 xp"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="343dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText12"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".22"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/bonus_points"
+                            android:textColor="@color/green"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/bonusPoints"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".5"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="255"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/editText2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".1"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/mode"
+                            android:textColor="@color/green"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+
+                        <EditText
+                            android:id="@+id/gameMode"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight=".50"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:inputType="textPersonName"
+                            android:text="@string/Multiplayer"
+                            android:textAlignment="textEnd"
+                            android:textColor="@color/White"
+                            tools:layout_editor_absoluteX="98dp"
+                            tools:layout_editor_absoluteY="309dp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingBottom="3dp"/>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_another_one"
+                            style="@style/Widget.AppCompat.Button.Colored"
+                            android:layout_width="166dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/smooth_button"
+                            android:text="@string/Another_one"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </android.support.constraint.ConstraintLayout>
+
+        </ScrollView>
+    </FrameLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/profile_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/midnight_grey"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:subtitle="@string/these_are_your_results"
+        app:title="@string/done"
+        app:titleTextColor="@color/green" />
+
+</android.support.constraint.ConstraintLayout>

@@ -166,7 +166,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material_design_icons/navigation/ic_more_vert_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/social/ic_mood_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -176,9 +176,13 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="ffffff" />
-                            <entry key="outputName" value="ic_icon_overflow" />
-                            <entry key="sourceFile" value="$APPLICATION_HOME_DIR$/bin/C:\Users\Adolphe" />
+                            <entry key="autoMirrored" value="true" />
+                            <entry key="color" value="02ff00" />
+                            <entry key="height" value="133" />
+                            <entry key="outputName" value="ic_mood_black_133dp" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Program Files\Android\Android Studio\bin\C:\Users\Adolphe" />
+                            <entry key="width" value="133" />
                           </map>
                         </option>
                       </PersistentState>

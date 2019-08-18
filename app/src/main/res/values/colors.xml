@@ -13,7 +13,11 @@
     <color name="midnight_red">#530303</color>
     <color name="midnight_grey">#26263D</color>
     <color name="blue">#008EFF</color>
+    <color name="violet">#3F51B5</color>
     <color name="afternoon_grey">#2f2f45</color>
     <color name="afternoon_red">#611B1B</color>
+    <color name="soft_red">#881818</color>
     <color name="black">#000000</color>
+    <color name="flashy_green">#02FF00</color>
+    <color name="flashy_red">#CC0000</color>
 </resources>

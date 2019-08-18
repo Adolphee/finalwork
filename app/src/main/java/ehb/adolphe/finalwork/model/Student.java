@@ -1,10 +1,20 @@
 
 package ehb.adolphe.finalwork.model;
 
+import android.util.Log;
+
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.Date;
+import java.util.List;
+
+import ehb.adolphe.finalwork.retrofit.RetroHelper;
+import ehb.adolphe.finalwork.retrofit.services.StudentService;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
 
 
 public class Student {
@@ -47,13 +57,36 @@ public class Student {
     private String slogan;
     @SerializedName("id")
     @Expose
-    private Integer id;
+    private Long id;
     @SerializedName("active")
     @Expose
     private Boolean active;
     @SerializedName("teacher")
     @Expose
     private Boolean teacher;
+
+    public void persist(Long exp){
+        Retrofit retrofit = RetroHelper.getInstance();
+
+        StudentService ss = retrofit.create(StudentService.class);
+
+        Call<Student> call = ss.update(this.id, this);
+
+        call.enqueue(new Callback<Student>() {
+            @Override
+            public void onResponse(Call<Student> call, Response<Student> response) {
+                if(!response.isSuccessful()) {
+                    Log.d("UPDATE STUDENT", "onResponse: " + response.code());
+                    return;
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Student> call, Throwable t) {
+                Log.d("UPDATE STUDENT", "onFailure: " + t.getMessage());
+            }
+        });
+    };
 
     public String getFirstname() {
         return firstname;
@@ -151,11 +184,11 @@ public class Student {
         this.slogan = slogan;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -174,6 +207,5 @@ public class Student {
     public void setTeacher(Boolean teacher) {
         this.teacher = teacher;
     }
-
 
 }

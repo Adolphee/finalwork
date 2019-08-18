@@ -1,12 +1,17 @@
 package ehb.adolphe.finalwork.activities;
 
+import android.animation.ObjectAnimator;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -20,6 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     TextView username_tv, currentLevel_tv, nextLevel_tv, fullname_tv, studies_tv, slogan_tv, email_tv;
     ProgressBar progressBar;
     RatingBar ratingBar;
+    ImageView avatar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,19 +78,20 @@ public class ProfileActivity extends AppCompatActivity {
     void initContent(){
         toolbar.setSubtitle(MainActivity.AUTH_USER.getFirstname());
         Student student = MainActivity.AUTH_USER;
-        username_tv = findViewById(R.id.username);
         currentLevel_tv = findViewById(R.id.currentLevel);
         progressBar = findViewById(R.id.progressBar);
         nextLevel_tv = findViewById(R.id.nextLevel);
         fullname_tv = findViewById(R.id.fullname);
+        username_tv = findViewById(R.id.username);
         ratingBar = findViewById(R.id.ratingBar);
+        avatar = findViewById(R.id.imageButton);
         studies_tv = findViewById(R.id.studies);
         slogan_tv = findViewById(R.id.slogan);
         email_tv = findViewById(R.id.email);
 
          username_tv.setText(student.getUsername());
-         int currentLevel = Math.round(student.getExperience() / 1000);
-         int exp_to_level_up = Math.round(student.getExperience() % 1000);
+         int currentLevel = Math.round(student.getExperience() / 5000);
+         int exp_to_level_up = Math.round(student.getExperience() % 5000);
          currentLevel_tv.setText(""+currentLevel); // 1000 xp = 1 level
          nextLevel_tv.setText( ""+ (currentLevel + 1));
          progressBar.setProgress(Math.round(new Float(exp_to_level_up/10)));
@@ -92,7 +99,35 @@ public class ProfileActivity extends AppCompatActivity {
          studies_tv.setText(student.getFieldOfStudy());
          slogan_tv.setText(student.getSlogan());
          email_tv.setText(student.getEmail());
-         ratingBar.setRating((float) 4.5);
+         ratingBar.setIsIndicator(true);
+         setAnimations();
+    }
+
+    void setAnimations(){
+
+        ObjectAnimator anim;
+        Animation anim2;
+        LinearLayout details = findViewById(R.id.details_container);
+
+        // avatar
+        anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.zoom_in);
+        anim2.setDuration(500);
+        avatar.startAnimation(anim2);
+
+        // rating stars
+        anim = ObjectAnimator.ofFloat(ratingBar, "rating", 0, 4.5f);
+        anim.setDuration(1000);
+        anim.start();
+
+        // prograss bar
+        anim = ObjectAnimator.ofInt(progressBar, "progress", 0, progressBar.getProgress());
+        anim.setDuration(2000);
+        anim.start();
+
+        // general info animation
+        anim2 = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_in_bottom);
+        anim2.setDuration(500);
+        details.startAnimation(anim2);
     }
 }
 

@@ -1,5 +1,6 @@
 package ehb.adolphe.finalwork.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -37,7 +38,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     String[] btn_name={"answer1" , "answer2","answer3" , "answer4"};
     TextView question_tv;
     public static Quiz currentQuiz;
-    Course course;
+    public static Course course;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,33 +54,45 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         String str = v.getTag().toString();
         View activ = findViewById(R.id.game_layout);
-
-        switch (Integer.parseInt(str)) {
-            case 1:
-                activ.setBackgroundResource(R.drawable.quiz_correct);
-                activ.setBackground(getDrawable(R.drawable.quiz_correct));
-                Toast.makeText(getApplicationContext(),"CORRECT !!!  + 5",Toast.LENGTH_SHORT).show();
-                try {
-                    Thread.sleep(500);
-                    if(currentQuiz.nextQuestion()) updateQuizScreen();
-                } catch (InterruptedException e) {
-                    Log.e("SLEEP", e.getMessage());
-                }
-                break;
-            case 0:
-                activ.setBackgroundResource(R.drawable.quiz_wrong);
-                activ.setBackground(getDrawable(R.drawable.quiz_wrong));
-                Toast.makeText(getApplicationContext(),"WRONG !!!  - 5",Toast.LENGTH_SHORT).show();
-                try {
-                    Thread.sleep(500);
-                    if(currentQuiz.nextQuestion()) updateQuizScreen();
-                } catch (InterruptedException e) {
-                    Log.e("SLEEP", e.getMessage());
-                }
-                break;
-            default:
-                break;
+        if(currentQuiz.getPosition() < currentQuiz.getQuestions().size()-1) {
+            switch (Integer.parseInt(str)) {
+                case 1:
+                    Integer question_value = currentQuiz.getQuestions().get(currentQuiz.getPosition()).getPoints();
+                    if (currentQuiz.isPreviousCorrect()) {
+                        currentQuiz.addBonusPoints((19L * question_value));
+                    }
+                    currentQuiz.addExperience(57L * currentQuiz.getQuestions().get(currentQuiz.getPosition()).getPoints());
+                    currentQuiz.handleCorrectAnswer();
+                    currentQuiz.setPreviousCorrect(true);
+                    activ.setBackgroundResource(R.drawable.quiz_correct);
+                    activ.setBackground(getDrawable(R.drawable.quiz_correct));
+                    Toast.makeText(getApplicationContext(), "CORRECT !!!  + 5", Toast.LENGTH_SHORT).show();
+                    try {
+                        Thread.sleep(500);
+                        if (currentQuiz.nextQuestion()) updateQuizScreen();
+                    } catch (InterruptedException e) {
+                        Log.e("SLEEP", e.getMessage());
+                    }
+                    break;
+                case 0:
+                    currentQuiz.setPreviousCorrect(false);
+                    activ.setBackgroundResource(R.drawable.quiz_wrong);
+                    activ.setBackground(getDrawable(R.drawable.quiz_wrong));
+                    Toast.makeText(getApplicationContext(), "WRONG !!!  - 5", Toast.LENGTH_SHORT).show();
+                    try {
+                        Thread.sleep(500);
+                        if (currentQuiz.nextQuestion()) updateQuizScreen();
+                    } catch (InterruptedException e) {
+                        Log.e("SLEEP", e.getMessage());
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return;
         }
+        Intent i = new Intent(getApplicationContext(), QuizResultsActivity.class);
+        startActivity(i);
     }
 
     void getQuiz(Long course_id){
@@ -121,6 +134,7 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             parent.addView(b1 ,lp);
             b1.setOnClickListener(GameActivity.this);
+            if( i == 3) break; // Maximum 4 answers
         }
     }
 }
