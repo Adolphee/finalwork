@@ -47,7 +47,7 @@ It turned out to be an **exam in disguise**. Over three months, we had to:
 
 > “In the real world, when working for a client, you won’t get to bail out.  
 > The show must go on. You make it to the finish line. Period.”  
-> — *Ruben, our C++ practical teacher*
+> — *Ruben, our C++ practical teacher (OOP)*
 
 ---
 
@@ -55,12 +55,14 @@ It turned out to be an **exam in disguise**. Over three months, we had to:
 
 Even though I scaled back the scope, here’s what I managed to deliver:
 - [x] Android app prototype (Java)
-- [x] Local quiz engine with hardcoded questions
+- [x] Local quiz engine (first with hardcoded questions, then with MariaDB)
 - [x] Basic scoring system
 - [x] Leaderboards
 - [x] Start menu + game over screen
-- [x] backend
-- [ ] multiplayer
+- [x] Backend
+- [ ] Multiplayer; challenge > (accept / Deny) > (no game / start game)
+- [ ] Achievements; Badge and token system for players to collect
+- [ ] More than 3 full topics for options
 
 Screenshots and possibly code walkthroughs will be added soon.
 
