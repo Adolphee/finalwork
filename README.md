@@ -60,7 +60,7 @@ Even though I scaled back the scope, here’s what I managed to deliver:
 - [x] Leaderboards
 - [x] Start menu + game over screen
 - [x] Backend
-- [ ] Multiplayer; challenge > (accept / Deny) > (no game / start game)
+- [ ] Multiplayer; challenge > (accept / Deny) > (start game/no game)
 - [ ] Achievements; Badge and token system for players to collect
 - [ ] More than 3 full topics for options
 
